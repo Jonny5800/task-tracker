@@ -2,7 +2,7 @@ import { FaTimes } from "react-icons/fa";
 const Task = ({ task, onDelete, passToggle }) => {
   return (
     <div
-      className="task"
+      className={`task ${task.reminder ? "reminder" : ""} `} //Y no comma b4 $
       onDoubleClick={() => {
         passToggle(task.id);
       }}
@@ -22,4 +22,3 @@ const Task = ({ task, onDelete, passToggle }) => {
 };
 
 export default Task;
-// onClick={() => { (passDelete)task.text }}
