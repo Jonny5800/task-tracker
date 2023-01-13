@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
-//import Tasks from "./components/Tasks";
+import Tasks from "./components/Tasks";
 import { useState } from "react";
 
 function App() {
@@ -19,15 +19,24 @@ function App() {
     },
     {
       id: 3,
-      text: "Food shopin",
+      text: "Food shopping",
       day: "Feb 5th at 2:30pm",
       reminder: false,
     },
   ]);
+
+  //Events go in the App
+  //DELETE task
+  // Needs a specific ID so it knows which to delete
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((tasks) => tasks.id !== id));
+    //console.log(id, " deletin em");
+  };
+
   return (
     <div className="container">
       <Header title={"Header from App.js"} />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }
