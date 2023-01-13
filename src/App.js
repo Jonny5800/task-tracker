@@ -30,17 +30,40 @@ function App() {
   // Needs a specific ID so it knows which to delete
   const deleteTask = (id) => {
     setTasks(tasks.filter((tasks) => tasks.id !== id));
-    //console.log(id, " deletin em");
+    console.log(id, " deletin em");
   };
+
+  //Toggle the reminder
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map((tasks) =>
+        tasks.id === id ? { ...tasks, reminder: !tasks.reminder } : tasks
+      )
+    );
+  };
+
+  //My wrong version
+  // const toggleReminder = (id) => {
+  //     setTasks(tasks.map((tasks) => {tasks.id === id ? [...!tasks.reminder] : "";
+  //       })
+  //     );
 
   return (
     <div className="container">
       <Header title={"Header from App.js"} />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? (
+        <Tasks
+          tasks={tasks}
+          onDelete={deleteTask}
+          toggleTask={toggleReminder}
+        />
+      ) : (
+        <h2>There are no tasks here</h2>
+      )}
     </div>
   );
 }
-
+//<Tasks tasks={tasks} onDelete={deleteTask} />
 export default App;
 
 //export default App;
