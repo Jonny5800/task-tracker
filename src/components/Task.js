@@ -1,5 +1,5 @@
 import { FaTimes } from "react-icons/fa";
-const Task = ({ task, onDelete, passToggle }) => {
+const Task = ({ task, onDelete, passToggle, addAlong }) => {
   return (
     <div
       className={`task ${task.reminder ? "reminder" : ""} `} //Y no comma b4 $
