@@ -25,7 +25,9 @@ function App() {
       reminder: false,
     },
   ]);
-
+  const addTask = (task) => {
+    console.log(task);
+  };
   //Events go in the App
   //DELETE task
   // Needs a specific ID so it knows which to delete
@@ -52,7 +54,7 @@ function App() {
   return (
     <div className="container">
       <Header title={"Header from App.js"} />
-      <AddTask />
+      <AddTask addOn={addTask} />
       {tasks.length > 0 ? (
         <Tasks
           tasks={tasks}
