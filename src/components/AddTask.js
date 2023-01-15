@@ -4,8 +4,23 @@ const AddTask = ({ addOn }) => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState(false);
+
+  const onFormSubmit = (e) => {
+    e.preventDefault(); //stops it from submitting to a page
+    if (!text) {
+      return alert("Please enter text");
+    }
+
+    //if there is text then pass that state into addOn
+    addOn({ text, day, reminder });
+    //Then clear the form for the next cycle
+    setText("");
+    setDay("");
+    setReminder(false);
+  };
+
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={onFormSubmit}>
       <div className="form-control">
         <label>Task</label>
         <input
@@ -21,8 +36,8 @@ const AddTask = ({ addOn }) => {
         <label>Day & Time</label>
         <input
           type="text"
-          value={day}
           placeholder="Add Day & Time"
+          value={day}
           onChange={(e) => {
             setDay(e.target.value);
           }} //missing value={day} from input
@@ -32,6 +47,7 @@ const AddTask = ({ addOn }) => {
         <label>Set Reminder</label>
         <input
           type="checkbox"
+          checked={reminder}
           value={reminder}
           placeholder="Add Task"
           onChange={(e) => {
@@ -39,7 +55,15 @@ const AddTask = ({ addOn }) => {
           }}
         />
       </div>
-      <input className="btn btn-block" type="submit" value="Save Task" />
+      <input
+        className="btn btn-block"
+        type="submit"
+        value="Save Task"
+        // onClick={(e) => {
+        //   e.preventDefault();
+        //   console.log("save button pressed");
+        // }}
+      />
     </form>
   );
 };
