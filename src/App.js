@@ -28,7 +28,6 @@ function App() {
   ]);
 
   const addTask = (task) => {
-    //console.log(task + "sf;gonbsf;lgn");
     const id = Math.floor(Math.random() * 10000 + 1);
     const newTask = { id, ...task };
     setTasks([newTask, ...tasks]);
@@ -47,12 +46,6 @@ function App() {
       )
     );
   };
-
-  //My wrong version
-  // const toggleReminder = (id) => {
-  //     setTasks(tasks.map((tasks) => {tasks.id === id ? [...!tasks.reminder] : "";
-  //       })
-  //     );
 
   return (
     <div className="container">
@@ -77,7 +70,7 @@ function App() {
     </div>
   );
 }
-//<Tasks tasks={tasks} onDelete={deleteTask} />
+
 export default App;
 
 //export default App;

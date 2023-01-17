@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddTask = ({ addOn }) => {
+const AddTask = ({ addOn, showFormPropToPass }) => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState(false);
